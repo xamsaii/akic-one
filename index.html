@@ -1,28 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AKIC-ONE</title>
-</head>
-<body>
-  <h1>AKIC-ONE</h1>
-
-  <div id="auth-box">
-    <input id="email" type="email" placeholder="Email">
-    <input id="password" type="password" placeholder="Password">
-    <button id="signup">Sign up</button>
-    <button id="login">Log in</button>
-  </div>
-
-  <div id="app" hidden>
-    <p>Logged in as <span id="who"></span></p>
-    <button id="logout">Log out</button>
-    <input id="note" placeholder="Write a note">
-    <button id="save">Save</button>
-    <ul id="notes"></ul>
-  </div>
-
-  <script type="module" src="app.js"></script>
-</body>
-</html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#2f5bea"><title>ONE-AKIC</title>
+<link rel="stylesheet" href="styles.css"></head><body>
+<div id="auth"><div class="card login">
+<div class="logo">ONE-<b>AKIC</b></div><p class="mu">Online Network Ecosystem – RC-AKIC</p>
+<input id="name" placeholder="Full name (sign up only)">
+<input id="email" type="email" placeholder="Email">
+<input id="password" type="password" placeholder="Password">
+<button id="login" class="pri">Log in</button><button id="signup">Create account</button>
+<small id="msg" class="mu"></small></div></div>
+<div id="app" hidden>
+<aside id="nav"></aside>
+<main><header><h2 id="title"></h2><span id="who" class="mu"></span>
+<button id="theme" title="Theme">🌓</button><button id="logout">Log out</button></header>
+<section id="view"></section></main></div>
+<div id="modal" hidden></div>
+<script type="module" src="app.js"></script></body></html>
