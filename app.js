@@ -179,6 +179,7 @@ onAuthStateChanged(auth, async u => { try {
   if (!s.exists()) { await setDoc(ref, { name: $("name").value || u.email, email: u.email, role: "pending", status: "active", createdAt: serverTimestamp() }); s = await getDoc(ref); }
   me = { id: u.uid, ...s.data() };
   if (me.status === "disabled") { alert("Your account is disabled."); return signOut(auth); }
+  if (me.role === "pending") { alert("Registration received. Please wait for the Super Admin to approve your account, then log in again."); return signOut(auth); }
   mods = M.filter(m => isSuper() || m.r.includes(me.role));
   $("who").textContent = `${me.name} · ${me.role}`;
   $("nav").innerHTML = `<h1>ONE-<b>AKIC</b></h1>` + mods.map(m => `<a href="#${m.id}" data-id="${m.id}"><span>${m.i}</span>${e(m.t)}</a>`).join("");
