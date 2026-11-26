@@ -174,7 +174,7 @@ mode(false);
 $("password").onkeydown = ev => { if (ev.key === "Enter") ($("login").hidden ? $("signup") : $("login")).click(); };
 $("logout").onclick = () => signOut(auth);
 const setTheme = t => { document.documentElement.dataset.theme = t; localStorage.th = t; };
-setTheme(localStorage.th || (matchMedia("(prefers-color-scheme:dark)").matches ? "dark" : "light"));
+setTheme(localStorage.th || "dark");
 $("theme").onclick = $("theme0").onclick = () => setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
 $("modal").onclick = ev => { if (ev.target.id === "modal") $("modal").hidden = true; };
 window.onhashchange = () => me && show(location.hash.slice(1));
