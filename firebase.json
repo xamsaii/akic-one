@@ -1,0 +1,12 @@
+{
+  "hosting": {
+    "site": "one-akic",
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "firestore.rules"
+    ]
+  }
+}
