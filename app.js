@@ -161,7 +161,7 @@ async function show(id) {
 }
 
 // ---- Auth & boot
-const go = (fn) => fn(auth, $("email").value, $("password").value).catch(x => $("msg").textContent = x.message);
+const go = (fn) => { $("msg").textContent = "Please wait…"; fn(auth, $("email").value.trim(), $("password").value).then(() => $("msg").textContent = "").catch(x => { $("msg").textContent = x.code + " – " + x.message; alert(x.message); }); };
 $("login").onclick = () => go(si);
 $("signup").onclick = () => { if (!$("name").value) return $("msg").textContent = "Enter your full name."; go(cu); };
 $("logout").onclick = () => signOut(auth);
@@ -171,7 +171,7 @@ $("theme").onclick = () => setTheme(document.documentElement.dataset.theme === "
 $("modal").onclick = ev => { if (ev.target.id === "modal") $("modal").hidden = true; };
 window.onhashchange = () => me && show(location.hash.slice(1));
 
-onAuthStateChanged(auth, async u => {
+onAuthStateChanged(auth, async u => { try {
   $("auth").hidden = !!u; $("app").hidden = !u;
   if (!u) { me = null; return; }
   const ref = doc(db, "users", u.uid);
@@ -183,4 +183,4 @@ onAuthStateChanged(auth, async u => {
   $("who").textContent = `${me.name} · ${me.role}`;
   $("nav").innerHTML = `<h1>ONE-<b>AKIC</b></h1>` + mods.map(m => `<a href="#${m.id}" data-id="${m.id}"><span>${m.i}</span>${e(m.t)}</a>`).join("");
   show(location.hash.slice(1));
-});
+} catch (x) { alert("Startup error: " + x.message); console.error(x); } });
