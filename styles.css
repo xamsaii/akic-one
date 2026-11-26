@@ -38,3 +38,13 @@ thead{display:none}.tw table,tbody,tr,td{display:block;border:0;background:none}
 tr{background:var(--card);border:1px solid var(--bd)!important;border-radius:14px;margin-bottom:10px;padding:6px 4px;box-shadow:var(--sh)}
 td{display:flex;justify-content:space-between;gap:12px;border:0;padding:5px 12px}td::before{content:attr(data-l);color:var(--mu);font-size:12px}
 #modal{align-items:end;padding:0}#modal form{border-radius:20px 20px 0 0;width:100%}}
+
+#auth{min-height:100vh;max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;place-items:unset;padding:clamp(20px,5vw,56px)}
+.login{width:100%;max-width:420px;justify-self:center}.login h3{margin:0}.login a{color:var(--ac);font-weight:600}
+.tt{position:fixed;top:calc(14px + env(safe-area-inset-top));right:14px;z-index:3}
+.badge{display:inline-block;padding:4px 12px;border-radius:99px;background:linear-gradient(135deg,var(--ac),var(--ac2));color:#fff;font-weight:700;font-size:13px;letter-spacing:.08em}
+.hero h1{font-size:clamp(30px,5vw,54px);line-height:1.08;letter-spacing:-1.5px;margin:14px 0}
+.hero h1 span{background:linear-gradient(135deg,var(--ac),var(--ac2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:17px;max-width:560px}.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chips i{font-style:normal;padding:7px 13px;border-radius:99px;background:var(--card);border:1px solid var(--bd);font-size:13px;box-shadow:var(--sh)}
+@media(max-width:800px){#auth{grid-template-columns:1fr;gap:24px;padding-top:calc(64px + env(safe-area-inset-top))}}

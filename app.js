@@ -164,10 +164,18 @@ async function show(id) {
 const go = (fn) => { $("msg").textContent = "Please wait…"; fn(auth, $("email").value.trim(), $("password").value).then(() => $("msg").textContent = "").catch(x => { $("msg").textContent = x.code + " – " + x.message; alert(x.message); }); };
 $("login").onclick = () => go(si);
 $("signup").onclick = () => { if (!$("name").value) return $("msg").textContent = "Enter your full name."; go(cu); };
+const mode = s => {
+  $("name").hidden = !s; $("login").hidden = s; $("signup").hidden = !s;
+  $("ttl").textContent = s ? "Create your account" : "Log in to your account";
+  $("tg").innerHTML = s ? 'Already have an account? <a href="#" id="tl">Log in</a>' : "No account yet? <a href=\"#\" id=\"tl\">Create an account</a>";
+  $("msg").textContent = ""; $("tl").onclick = ev => { ev.preventDefault(); mode(!s); };
+};
+mode(false);
+$("password").onkeydown = ev => { if (ev.key === "Enter") ($("login").hidden ? $("signup") : $("login")).click(); };
 $("logout").onclick = () => signOut(auth);
 const setTheme = t => { document.documentElement.dataset.theme = t; localStorage.th = t; };
 setTheme(localStorage.th || (matchMedia("(prefers-color-scheme:dark)").matches ? "dark" : "light"));
-$("theme").onclick = () => setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
+$("theme").onclick = $("theme0").onclick = () => setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
 $("modal").onclick = ev => { if (ev.target.id === "modal") $("modal").hidden = true; };
 window.onhashchange = () => me && show(location.hash.slice(1));
 
